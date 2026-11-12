@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GeeHaw Diesel & Equipment Repair</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Mobile heavy-duty truck and equipment repair serving Jackson, TN. Diesel diagnostics, aftertreatment, and mobile tire service.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&family=Inter:wght@400;500;600&family=Saira+Stencil+One&family=Source+Sans+3:wght@400;600&family=Archivo:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: light, calm hero; colored top bar and work-order band; three swappable design directions for client review (light only, by choice) */
+:root{ /* Design 1: Blue & Chrome */
+  --bg:#eef1f5;--panel:#ffffff;--ink:#10203a;--muted:#55627a;--line:#cbd2dc;
+  --accent:#c8102e;--accent-ink:#ffffff;--steel:#12358a;--steel-fg:#ffffff;--chrome:#c9d3df;
+  --hero-bg:#f7f9fc;--hero-fg:#10203a;--hero-accent:#12358a;
+  --trim:linear-gradient(90deg,#8d99a8,#eef2f6 30%,#a3afbd 60%,#e3e8ee);
+  --display:"Roboto Slab",Rockwell,Georgia,serif;--dw:800;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+:root[data-design="green"]{ /* Design 2: Field Green & Khaki */
+  --bg:#f2efe6;--panel:#fbf9f3;--ink:#1f2a1c;--muted:#5d6553;--line:#d8d1bf;
+  --accent:#b4471f;--accent-ink:#ffffff;--steel:#2f3d26;--steel-fg:#f4f1e6;--chrome:#cdbf92;
+  --hero-bg:#e9e2cf;--hero-fg:#1f2a1c;--hero-accent:#4b5f31;
+  --trim:#cdbf92;
+  --display:"Saira Stencil One","Arial Narrow",Impact,sans-serif;--dw:400;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+:root[data-design="white"]{ /* Design 3: White Shop Clean */
+  --bg:#ffffff;--panel:#f4f5f7;--ink:#14213d;--muted:#5a6475;--line:#e1e4ea;
+  --accent:#d62828;--accent-ink:#ffffff;--steel:#14213d;--steel-fg:#ffffff;--chrome:#ffffff;
+  --hero-bg:#ffffff;--hero-fg:#14213d;--hero-accent:#d62828;
+  --trim:#d62828;
+  --display:"Archivo","Arial Black",system-ui,sans-serif;--dw:800;
+  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.05;text-wrap:balance;margin:0;letter-spacing:.01em}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.tag{font-family:var(--mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* top bar */
+.bar{background:var(--steel);color:var(--steel-fg)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px;flex-wrap:wrap}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none}
+.mark svg{flex:none}
+.mark b{font-family:var(--display);font-weight:900;font-size:1.6rem;letter-spacing:.04em;line-height:1}
+.mark small{display:block;font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;opacity:.8}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--accent);color:var(--accent-ink);font-family:var(--display);font-weight:700;font-size:1.08rem;letter-spacing:.02em;text-decoration:none;padding:12px 20px;border:0;border-radius:3px;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
+
+/* hero */
+.hero{background:var(--hero-bg);color:var(--hero-fg);position:relative}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--trim)}
+.hero .wrap{padding-block:44px 56px;display:grid;gap:20px}
+.hero h1{font-size:clamp(2rem,5.2vw,3.3rem)}
+.hero h1 span{color:var(--hero-accent)}
+.hero p.lead{max-width:56ch;font-size:1.1rem;color:var(--muted)}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero .num{font-family:var(--mono);font-size:1rem;opacity:.85}
+.facts{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;opacity:.85;list-style:none;margin:0;padding:0}
+.facts li::before{content:"■ ";color:var(--hero-accent)}
+
+section{padding-block:64px}
+.head{display:grid;gap:10px;margin-bottom:32px}
+.head p{max-width:60ch;color:var(--muted)}
+
+/* services as work-order lines */
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));border-top:2px solid var(--ink)}
+.svc article{padding:22px 20px 24px 0;border-bottom:1px solid var(--line);display:grid;gap:8px;grid-template-columns:auto 1fr;column-gap:14px;align-content:start;min-width:0}
+.svc .code{font-family:var(--mono);font-size:.78rem;color:var(--muted);padding-top:3px}
+.svc h3,.svc p{grid-column:2}
+.svc p{color:var(--muted);font-size:.96rem}
+
+/* engines */
+.engines{background:var(--panel);border-block:1px solid var(--line)}
+.eng{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:2px;background:var(--line);border:1px solid var(--line)}
+.eng div{background:var(--panel);padding:20px;display:grid;gap:4px}
+.eng b{font-family:var(--display);font-size:1.6rem;font-weight:800;line-height:1.1}
+.eng span{font-family:var(--mono);font-size:.8rem;color:var(--muted)}
+.note{margin-top:16px;font-size:.9rem;color:var(--muted)}
+
+/* area + about */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px}
+.two > *{min-width:0}
+.towns{display:flex;flex-wrap:wrap;gap:8px;list-style:none;padding:0;margin:20px 0 0}
+.towns li{font-family:var(--mono);font-size:.85rem;padding:6px 12px;border:1px solid var(--line);border-radius:2px}
+.towns li.home{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.about p+p{margin-top:12px}
+.about p{color:var(--muted)}
+
+/* form */
+.order{background:var(--steel);color:var(--steel-fg)}
+.order .head p{color:inherit;opacity:.8}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:18px 22px;max-width:860px}
+label{display:grid;gap:6px;font-family:var(--mono);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase}
+input,select,textarea{font:inherit;font-family:var(--body);font-size:1rem;letter-spacing:0;text-transform:none;padding:12px;border:0;border-bottom:2px solid var(--steel-fg);background:rgba(255,255,255,.07);color:var(--steel-fg);border-radius:2px 2px 0 0}
+select option{color:#1c2228}
+textarea{min-height:110px;resize:vertical}
+.full{grid-column:1/-1}
+.msg{grid-column:1/-1;font-size:.95rem;padding:12px 14px;border-left:4px solid var(--accent);background:rgba(255,255,255,.06)}
+
+footer{padding-block:28px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer a{color:var(--ink);font-weight:600}
+
+/* sticky call button on phones */
+.callfab{display:none}
+@media (max-width:640px){
+  .callfab{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:20;justify-content:center;
+    padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:var(--steel)}
+  .callfab .btn{width:100%;justify-content:center}
+  footer{padding-bottom:96px}
+  .bar .btn{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+h1,h2,h3,.eng b,.mark b,.btn{font-weight:var(--dw)}
+.designs{background:var(--panel);border-bottom:1px solid var(--line)}
+.designs .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:8px}
+.designs span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.designs button{font:inherit;font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.designs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+</style>
+</head>
+<body>
+
+<nav class="designs" aria-label="Design options">
+  <div class="wrap">
+    <span>Preview design</span>
+    <button type="button" id="d-blue" data-d="blue" aria-pressed="true">1 · Blue &amp; Chrome</button>
+    <button type="button" id="d-green" data-d="green" aria-pressed="false">2 · Field Green</button>
+    <button type="button" id="d-white" data-d="white" aria-pressed="false">3 · Shop White</button>
+  </div>
+</nav>
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="GeeHaw Diesel & Equipment Repair">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <rect x="1" y="1" width="38" height="38" rx="3" fill="none" stroke="var(--chrome)" stroke-width="2"/>
+        <path d="M11 29 L20 11 L29 29" fill="none" stroke="var(--accent)" stroke-width="3.2" stroke-linejoin="miter"/>
+        <path d="M14.5 22 H25.5" stroke="var(--steel-fg)" stroke-width="3"/>
+      </svg>
+      <span><b>GEEHAW</b><small>DIESEL &amp; EQUIPMENT REPAIR LLC</small></span>
+    </a>
+    <a class="btn" href="tel:+17312259722">Call 731-225-9722</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding:0">
+    <div class="wrap">
+      <span class="tag">Mobile heavy-duty repair · Jackson, TN</span>
+      <h1>Mobile Diesel Repair,<br><span>Right Where You Are.</span></h1>
+      <p class="lead">Mobile diesel repair for semis, dump trucks and heavy equipment. We bring the tools, the diagnostics and the tires to your truck, whether it's on the shoulder, at your yard or on the job site.</p>
+      <div class="ctas">
+        <a class="btn" href="tel:+17312259722">Call 731-225-9722</a>
+        <a class="btn ghost" href="#request">Request service</a>
+      </div>
+      <ul class="facts">
+        <li>Mobile service truck</li>
+        <li>Diesel diagnostics</li>
+        <li>DPF · DEF · EGR</li>
+        <li>Mobile tire service</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">What we fix</span>
+        <h2>Services</h2>
+        <p>Most repairs are done right where your truck sits. Fewer tow bills, less downtime.</p>
+      </div>
+      <div class="svc">
+        <article><span class="code">01</span><h3>Diesel Engine Diagnostics</h3><p>Computer-assisted troubleshooting with Cummins INSITE and OEM-level software. We find the root cause before we start replacing parts.</p></article>
+        <article><span class="code">02</span><h3>Engine Repair</h3><p>Repairs from sensors and injectors up to major component work on heavy-duty diesel engines.</p></article>
+        <article><span class="code">03</span><h3>Aftertreatment</h3><p>DPF, DEF/SCR and EGR diagnostics and repair, plus forced regens and derate troubleshooting to get you back to full power.</p></article>
+        <article><span class="code">04</span><h3>Mobile Tire Service</h3><p>Roadside and on-site tire changes for trucks and trailers, so you can get rolling again.</p></article>
+        <article><span class="code">05</span><h3>Brakes, Steering &amp; Suspension</h3><p>Air brake work, steering systems and suspension repair, with DOT safety in mind.</p></article>
+        <article><span class="code">06</span><h3>Preventive Maintenance</h3><p>Oil and fluid changes, inspections and scheduled service for owner-operators and small fleets.</p></article>
+        <article><span class="code">07</span><h3>Heavy Equipment</h3><p>Hydraulics, engines and repairs on dozers, loaders, excavators and other job-site equipment.</p></article>
+        <article><span class="code">08</span><h3>Welding &amp; Fabrication</h3><p>MIG welding and brazing for brackets, frames and on-the-spot fixes.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="engines">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag">Engines we work on</span>
+        <h2>Big-name diesels</h2>
+      </div>
+      <div class="eng">
+        <div><b>Caterpillar</b><span>C7 · C13 · C15</span></div>
+        <div><b>Cummins</b><span>ISC 8.3L · ISX · X15</span></div>
+        <div><b>Detroit</b><span>DD13 · DD15 · Series 60</span></div>
+        <div><b>PACCAR</b><span>MX-11 · MX-13</span></div>
+      </div>
+      <p class="note">Not sure about your engine? Call us. If it runs on diesel, chances are we can work on it.</p>
+    </div>
+  </section>
+
+  <section id="area">
+    <div class="wrap two">
+      <div>
+        <span class="tag">Service area</span>
+        <h2 style="margin-top:10px">Jackson, TN &amp; surrounding area</h2>
+        <p style="margin-top:14px;color:var(--muted)">Based out of Madison County and serving the roads and job sites of West Tennessee, including I-40 and US-45 corridors.</p>
+        <ul class="towns">
+          <li class="home">Jackson</li><li>Alamo</li><li>Humboldt</li><li>Milan</li><li>Bells</li><li>Medina</li><li>Henderson</li><li>Lexington</li>
+        </ul>
+      </div>
+      <div class="about">
+        <span class="tag">Who shows up</span>
+        <h2 style="margin:10px 0 14px">Garrick Hall</h2>
+        <p>Garrick is a hands-on diesel mechanic who spent his time in the dealership bays at MHC Kenworth in Jackson, working on engines, transmissions, brakes, steering and suspension on heavy trucks every day.</p>
+        <p>Now he brings that same dealership-level know-how straight to your truck. You get the mechanic himself, not a call center.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="order" id="request">
+    <div class="wrap">
+      <div class="head">
+        <span class="tag" style="color:inherit;opacity:.75">Work order</span>
+        <h2>Request service</h2>
+        <p>Tell us what's going on and where you are. For a breakdown, calling is fastest: <strong>731-225-9722</strong>.</p>
+      </div>
+      <form id="wo" novalidate>
+        <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+        <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+        <label for="f-unit">Truck / equipment<input id="f-unit" name="unit" placeholder="e.g. 2019 Peterbilt 389, DD13"></label>
+        <label for="f-svc">Service needed
+          <select id="f-svc" name="svc">
+            <option>Breakdown / won't start</option>
+            <option>Check engine / derate</option>
+            <option>DPF / DEF / EGR</option>
+            <option>Tire change</option>
+            <option>Brakes / steering / suspension</option>
+            <option>Preventive maintenance</option>
+            <option>Heavy equipment</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label class="full" for="f-loc">Where's the truck?<input id="f-loc" name="loc" placeholder="Address, mile marker, or job site"></label>
+        <label class="full" for="f-desc">What's happening?<textarea id="f-desc" name="desc" placeholder="Codes, symptoms, warning lights…"></textarea></label>
+        <div class="full"><button class="btn" type="submit">Send request</button></div>
+        <p class="msg" id="f-msg" hidden></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 GeeHaw Diesel &amp; Equipment Repair LLC · Alamo &amp; Jackson, TN · 731-225-9722</span>
+    <span>A product of <a href="https://www.litamerica.net" target="_blank" rel="noopener">LIT America</a></span>
+  </div>
+</footer>
+
+<div class="callfab"><a class="btn" href="tel:+17312259722">Call 731-225-9722</a></div>
+
+<script>
+(function(){
+  var btns=document.querySelectorAll('.designs button');
+  function set(d){
+    if(['blue','green','white'].indexOf(d)<0) d='blue';
+    if(d==='blue') document.documentElement.removeAttribute('data-design'); else document.documentElement.setAttribute('data-design',d);
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.d===d?'true':'false')});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){set(b.dataset.d);try{history.replaceState(null,'','#'+b.dataset.d)}catch(e){location.hash=b.dataset.d}})});
+  window.addEventListener('hashchange',function(){set(location.hash.slice(1))});
+  set(location.hash.slice(1));
+})();
+
+document.getElementById('wo').addEventListener('submit',function(e){
+  e.preventDefault();
+  var m=document.getElementById('f-msg');
+  var n=document.getElementById('f-name').value.trim(), p=document.getElementById('f-phone').value.trim();
+  if(!n||!p){m.textContent='Please add your name and phone number so we can call you back.';m.hidden=false;return;}
+  m.textContent='Thanks, '+n+'. This is a preview of the site, so the request was not sent. For service now, call 731-225-9722.';
+  m.hidden=false;
+});
+</script>
+</body>
+</html>
