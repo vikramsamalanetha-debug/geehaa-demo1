@@ -14,24 +14,13 @@
 <meta name="geo.placename" content="Jackson, Tennessee">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%2312358a'/%3E%3Cpath d='M11 29 L20 11 L29 29' fill='none' stroke='%23c8102e' stroke-width='3.4'/%3E%3Cpath d='M14.5 22 H25.5' stroke='white' stroke-width='3'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Saira+Stencil+One&family=Source+Sans+3:wght@400;600&family=Archivo:wght@700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <link rel="stylesheet" href="./assets/site.css">
-<script>
-(function(){var d=null;try{var h=location.hash.slice(1);if(['blue','green','white'].indexOf(h)>-1){d=h;localStorage.setItem('gh-design',h)}else{d=localStorage.getItem('gh-design')}}catch(e){}
-if(d&&d!=='blue')document.documentElement.setAttribute('data-design',d);})();
-</script>
+
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "AutoRepair", "@id": "https://www.geehawdiesel.com/#business", "name": "GeeHaw Diesel & Equipment Repair LLC", "alternateName": "GeeHaw Diesel", "url": "https://www.geehawdiesel.com/", "telephone": "+1-731-225-9722", "description": "24/7 mobile heavy-duty diesel truck repair, mobile semi truck tire service, DPF/DEF/EGR repair and mobile heavy equipment repair serving Jackson, TN and West Tennessee.", "address": {"@type": "PostalAddress", "addressLocality": "Alamo", "addressRegion": "TN", "addressCountry": "US"}, "areaServed": [{"@type": "City", "name": "Jackson, TN"}, {"@type": "City", "name": "Alamo, TN"}, {"@type": "City", "name": "Humboldt, TN"}, {"@type": "City", "name": "Milan, TN"}, {"@type": "City", "name": "Bells, TN"}, {"@type": "City", "name": "Medina, TN"}, {"@type": "City", "name": "Henderson, TN"}, {"@type": "City", "name": "Lexington, TN"}, {"@type": "City", "name": "Brownsville, TN"}, {"@type": "City", "name": "Trenton, TN"}], "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], "opens": "00:00", "closes": "23:59"}], "priceRange": "$$", "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Mobile repair services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Diesel Mechanic in Jackson, TN"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Truck Tire Service in Jackson, TN"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "DPF, DEF & EGR Repair in Jackson, TN"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Heavy Equipment Repair in Jackson, TN"}}]}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Are you really open 24/7?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. GeeHaw takes breakdown calls 24 hours a day, 7 days a week, including nights, weekends and holidays. Call 731-225-9722."}}, {"@type": "Question", "name": "What areas do you cover?", "acceptedAnswer": {"@type": "Answer", "text": "We're based in Alamo and serve Jackson and the surrounding West Tennessee area, including Humboldt, Milan, Bells, Medina, Henderson, Lexington, Brownsville, Trenton and the I-40 and US-45 corridors."}}, {"@type": "Question", "name": "Do you change semi truck tires on the roadside?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mobile tire changes for semis, trailers and dump trucks are one of our main services."}}, {"@type": "Question", "name": "What engines do you work on?", "acceptedAnswer": {"@type": "Answer", "text": "We work on Caterpillar, Cummins, Detroit and PACCAR heavy-duty diesel engines, plus aftertreatment systems (DPF, DEF/SCR, EGR)."}}, {"@type": "Question", "name": "Is a mobile mechanic cheaper than towing to a shop?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Many repairs can be done where the truck sits, which saves the tow bill and gets you back on the road sooner."}}]}</script>
 </head>
 <body>
-<nav class="designs" aria-label="Design options">
-  <div class="wrap">
-    <span>Preview design</span>
-    <button type="button" id="d-blue" data-d="blue" aria-pressed="true">1 · Blue &amp; Chrome</button>
-    <button type="button" id="d-green" data-d="green" aria-pressed="false">2 · Field Green</button>
-    <button type="button" id="d-white" data-d="white" aria-pressed="false">3 · Shop White</button>
-  </div>
-</nav>
 <header class="bar">
   <div class="wrap">
     <a class="mark" href="./" aria-label="GeeHaw Diesel &amp; Equipment Repair home">
@@ -169,7 +158,6 @@ if(d&&d!=='blue')document.documentElement.setAttribute('data-design',d);})();
   </div>
 </footer>
 <div class="callfab"><a class="btn" href="tel:+17312259722">Call 24/7: 731-225-9722</a></div>
-<script src="./assets/site.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>

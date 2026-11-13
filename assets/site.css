@@ -1,6 +1,6 @@
 
-/* Layout: light, calm hero; colored top bar and work-order band; three swappable design directions for client review (light only, by choice) */
-:root{ /* Design 1: Blue & Chrome */
+/* Layout: light, calm hero; colored top bar and work-order band; blue & chrome (light only, by choice) */
+:root{ /* Blue & Chrome */
   --bg:#eef1f5;--panel:#ffffff;--ink:#10203a;--muted:#55627a;--line:#cbd2dc;
   --accent:#c8102e;--accent-ink:#ffffff;--steel:#12358a;--steel-fg:#ffffff;--chrome:#c9d3df;
   --hero-bg:#f7f9fc;--hero-fg:#10203a;--hero-accent:#12358a;
@@ -9,22 +9,6 @@
   --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
   color-scheme:light;
-}
-:root[data-design="green"]{ /* Design 2: Field Green & Khaki */
-  --bg:#f2efe6;--panel:#fbf9f3;--ink:#1f2a1c;--muted:#5d6553;--line:#d8d1bf;
-  --accent:#b4471f;--accent-ink:#ffffff;--steel:#2f3d26;--steel-fg:#f4f1e6;--chrome:#cdbf92;
-  --hero-bg:#e9e2cf;--hero-fg:#1f2a1c;--hero-accent:#4b5f31;
-  --trim:#cdbf92;
-  --display:"Saira Stencil One","Arial Narrow",Impact,sans-serif;--dw:400;
-  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
-}
-:root[data-design="white"]{ /* Design 3: White Shop Clean */
-  --bg:#ffffff;--panel:#f4f5f7;--ink:#14213d;--muted:#5a6475;--line:#e1e4ea;
-  --accent:#d62828;--accent-ink:#ffffff;--steel:#14213d;--steel-fg:#ffffff;--chrome:#ffffff;
-  --hero-bg:#ffffff;--hero-fg:#14213d;--hero-accent:#d62828;
-  --trim:#d62828;
-  --display:"Archivo","Arial Black",system-ui,sans-serif;--dw:800;
-  --body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -115,11 +99,6 @@ footer a{color:var(--ink);font-weight:600}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 h1,h2,h3,.eng b,.mark b,.btn{font-weight:var(--dw)}
-.designs{background:var(--panel);border-bottom:1px solid var(--line)}
-.designs .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:8px}
-.designs span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
-.designs button{font:inherit;font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
-.designs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 
 .subnav{background:var(--panel);border-bottom:1px solid var(--line)}
 .subnav .wrap{display:flex;gap:4px 18px;padding-block:10px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
