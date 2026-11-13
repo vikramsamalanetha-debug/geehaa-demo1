@@ -126,22 +126,26 @@ if(d&&d!=='blue')document.documentElement.setAttribute('data-design',d);})();
     <div class="head">
       <span class="tag" style="color:inherit;opacity:.75">Work order</span>
       <h2>Request service</h2>
-      <p>For a breakdown, calling is fastest: <strong>731-225-9722</strong>, answered 24/7. For scheduled work, send us the details.</p>
+      <p>For a breakdown, calling is fastest: <strong>731-225-9722</strong>, answered 24/7. You can also send the details here and they go straight to Garrick's phone.</p>
     </div>
     <form id="wo" novalidate>
       <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
       <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
-      <label for="f-unit">Truck / equipment<input id="f-unit" name="unit" placeholder="e.g. 2019 Peterbilt 389, DD13"></label>
-      <label for="f-svc">Service needed
+      <label for="f-email">Email (optional)<input id="f-email" name="email" type="email" autocomplete="email" maxlength="200"></label>
+      <label for="f-unit">Truck / equipment<input id="f-unit" name="unit" maxlength="100" placeholder="e.g. 2019 Peterbilt 389, DD13"></label>
+      <label class="full" for="f-svc">Service needed
         <select id="f-svc" name="svc">
-          <option>Breakdown / won't start</option><option>Tire change</option><option>Check engine / derate</option>
-          <option>DPF / DEF / EGR</option><option>Brakes / steering / suspension</option><option>Preventive maintenance</option>
-          <option>Heavy equipment</option><option>Other</option>
+          <option value="Roadside repair" data-now="1">Breakdown / won't start</option><option value="Mobile tire service" data-now="1">Tire change</option>
+          <option value="Diagnostics">Check engine / derate</option><option value="DPF / DEF / EGR">DPF / DEF / EGR</option>
+          <option value="Brakes &amp; suspension">Brakes / steering / suspension</option><option value="Preventive maintenance">Preventive maintenance</option>
+          <option value="Heavy equipment repair">Heavy equipment</option><option value="Roadside repair">Other</option>
         </select>
       </label>
-      <label class="full" for="f-loc">Where's the truck?<input id="f-loc" name="loc" placeholder="Address, mile marker, or job site"></label>
-      <label class="full" for="f-desc">What's happening?<textarea id="f-desc" name="desc" placeholder="Codes, symptoms, warning lights, tire size…"></textarea></label>
-      <div class="full"><button class="btn" type="submit">Send request</button></div>
+      <label class="full" for="f-loc">Where's the truck?<input id="f-loc" name="loc" maxlength="200" placeholder="Address, mile marker, or job site"></label>
+      <label class="full" for="f-desc">What's happening?<textarea id="f-desc" name="desc" maxlength="1500" placeholder="Codes, symptoms, warning lights, tire size…"></textarea></label>
+      <label class="full now" for="f-now"><input id="f-now" name="now" type="checkbox" checked> <span>I'm broken down now and need help right away</span></label>
+      <label class="hp" aria-hidden="true">Leave this empty<input id="f-web" name="website" tabindex="-1" autocomplete="off"></label>
+      <div class="full"><button class="btn" type="submit" id="f-send">Send request</button></div>
       <p class="msg" id="f-msg" hidden></p>
     </form>
   </div>
@@ -166,5 +170,9 @@ if(d&&d!=='blue')document.documentElement.setAttribute('data-design',d);})();
 </footer>
 <div class="callfab"><a class="btn" href="tel:+17312259722">Call 24/7: 731-225-9722</a></div>
 <script src="./assets/site.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+<script src="./assets/dayzift-request.js"></script>
 </body>
 </html>
