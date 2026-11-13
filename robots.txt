@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vikramsamalanetha-debug.github.io/geehaa-demo1/sitemap.xml
+Sitemap: https://www.geehawdiesel.com/sitemap.xml
